@@ -3,12 +3,16 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
+// C++ standard
 #include <algorithm>
 #include <cassert>
+#include <cmath>
 #include <limits>
 
+// Pluginlib
 #include <pluginlib/class_list_macros.h>
-#include <pal_control_msgs/ActuatorCurrentLimit.h>
+
+// Project
 #include <current_limit_controller/current_limit_controller.h>
 
 
@@ -69,6 +73,12 @@ bool CurrentLimitController::init(pal_ros_control::CurrentLimitInterface* hw, ro
     return false;
   }
 
+  // State publish rate
+  double state_pub_rate = 50.0;
+  controller_nh.getParam("state_publish_rate", state_pub_rate);
+  ROS_DEBUG_STREAM_NAMED(ctrl_name_, "Controller state will be published at " << state_pub_rate << "Hz.");
+  state_pub_period_ = ros::Duration(1.0 / state_pub_rate);
+
   // Resource handles
   for (unsigned int i = 0; i < names_.size(); ++i)
   {
@@ -91,6 +101,17 @@ bool CurrentLimitController::init(pal_ros_control::CurrentLimitInterface* hw, ro
   // ROS API: Subscribed topics
   curr_lim_sub_ = controller_nh.subscribe("command", 1, &CurrentLimitController::commandCB, this);
 
+  // ROS API: Published topics
+  state_pub_.reset(new StatePublisher(controller_nh, "state", 1));
+
+  // Preeallocate resources
+  {
+    state_pub_->lock();
+    state_pub_->msg_.actuator_names = names_;
+    state_pub_->msg_.current_limits.resize(names_.size());
+    state_pub_->unlock();
+  }
+
   return true;
 }
 
@@ -99,6 +120,9 @@ void CurrentLimitController::starting(const ros::Time& time)
 {
   // Set null command
   cmd_.writeFromNonRT(null_cmd_);
+
+  // Initialize last state update time
+  last_state_pub_time_ = time;
 }
 
 void CurrentLimitController::stopping(const ros::Time& time)
@@ -115,6 +139,8 @@ void CurrentLimitController::update(const ros::Time& time, const ros::Duration& 
   {
     handles_[i].setCurrentLimit(new_cmd[i]);
   }
+
+  publishState(time);
 }
 
 void CurrentLimitController::commandCB(const pal_control_msgs::ActuatorCurrentLimitConstPtr& msg)
@@ -150,6 +176,26 @@ void CurrentLimitController::commandCB(const pal_control_msgs::ActuatorCurrentLi
     cmd_new.push_back(msg->current_limits[id]);
   }
   cmd_.writeFromNonRT(cmd_new);
+}
+
+void CurrentLimitController::publishState(const ros::Time& time)
+{
+  // Check if it's time to publish
+  if (!state_pub_period_.isZero() && last_state_pub_time_ + state_pub_period_ < time)
+  {
+    if (state_pub_ && state_pub_->trylock())
+    {
+      last_state_pub_time_ += state_pub_period_;
+
+      for (unsigned int i = 0; i < handles_.size(); ++i)
+      {
+        const double val = handles_[i].getCurrentLimit();
+        state_pub_->msg_.current_limits[i] = isnan(val) ? 1.0 : val; // TODO: Fix in actuators manager side
+      }
+
+      state_pub_->unlockAndPublish();
+    }
+  }
 }
 
 } // namespace

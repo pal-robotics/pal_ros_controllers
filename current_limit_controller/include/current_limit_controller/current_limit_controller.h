@@ -6,16 +6,23 @@
 #ifndef PAL_ROS_CONTROLLERS_CURRENT_LIMIT_CONTROLLER_H
 #define PAL_ROS_CONTROLLERS_CURRENT_LIMIT_CONTROLLER_H
 
+// C++ standard
 #include <vector>
-#include <ros/ros.h>
-#include <realtime_tools/realtime_buffer.h>
-#include <controller_interface/controller.h>
-#include <pal_ros_control/current_limit_interface.h>
 
-namespace pal_control_msgs
-{
-ROS_DECLARE_MESSAGE(ActuatorCurrentLimit);
-}
+// Boost
+#include <boost/scoped_ptr.hpp>
+
+// ROS
+#include <ros/ros.h>
+
+// ros_controls
+#include <realtime_tools/realtime_buffer.h>
+#include <realtime_tools/realtime_publisher.h>
+#include <controller_interface/controller.h>
+
+// PAL-specific
+#include <pal_control_msgs/ActuatorCurrentLimit.h>
+#include <pal_ros_control/current_limit_interface.h>
 
 namespace pal_ros_controllers
 {
@@ -41,14 +48,22 @@ public:
   /*\}*/
 
 private:
+  typedef realtime_tools::RealtimePublisher<pal_control_msgs::ActuatorCurrentLimit> StatePublisher;
+  typedef boost::scoped_ptr<StatePublisher> StatePublisherPtr;
+
   std::string ctrl_name_; ///< Controller name.
   std::vector<std::string> names_; ///< Names of actuators used by this controller.
   realtime_tools::RealtimeBuffer<std::vector<double> > cmd_; ///< Ordered as the list of actuator names.
   std::vector<double> null_cmd_;
   std::vector<pal_ros_control::CurrentLimitHandle> handles_; ///< Handles to controlled actuators.
   ros::Subscriber curr_lim_sub_;
+  StatePublisherPtr state_pub_;
+
+  ros::Duration state_pub_period_;
+  ros::Time last_state_pub_time_; // TODO: Populate with controller uptime, not system time
 
   void commandCB(const pal_control_msgs::ActuatorCurrentLimitConstPtr& msg);
+  void publishState(const ros::Time& time);
 };
 
 } // namespace
