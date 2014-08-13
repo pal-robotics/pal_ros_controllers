@@ -9,6 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
   pal_control_msgs
   pal_ros_control
   pluginlib
+  realtime_tools
   roscpp
 )
 
@@ -20,6 +21,7 @@ catkin_package(
     pal_control_msgs
     pal_ros_control
     pluginlib
+    realtime_tools
     roscpp
 )
 
