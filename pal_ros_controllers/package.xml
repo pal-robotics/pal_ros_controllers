@@ -15,7 +15,7 @@
 
   <run_depend>current_limit_controller</run_depend>
   <run_depend>rqt_current_limit_controller</run_depend>
-
+  <run_depend>simple_grasping_action</run_depend>
   <export>
     <metapackage/>
   </export>
