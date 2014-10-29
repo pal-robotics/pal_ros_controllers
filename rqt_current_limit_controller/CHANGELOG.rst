@@ -2,7 +2,7 @@
 Changelog for package rqt_current_limit_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.0 (2014-10-29)
+------------------
 * Initial version of rqt_current_limit_controller
 * Contributors: Adolfo Rodriguez Tsouroukdissian
