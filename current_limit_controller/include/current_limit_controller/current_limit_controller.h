@@ -22,7 +22,7 @@
 
 // PAL-specific
 #include <pal_control_msgs/ActuatorCurrentLimit.h>
-#include <pal_ros_control/current_limit_interface.h>
+#include <pal_hardware_interfaces/current_limit_interface.h>
 
 namespace pal_ros_controllers
 {
