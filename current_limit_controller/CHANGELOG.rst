@@ -2,8 +2,8 @@
 Changelog for package current_limit_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.1 (2017-01-16)
+------------------
 * Added gitignore
 * Fixed compilation issue
 * Contributors: Hilario Tome
