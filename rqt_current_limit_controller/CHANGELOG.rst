@@ -2,6 +2,9 @@
 Changelog for package rqt_current_limit_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.1.1 (2017-01-16)
 ------------------
 

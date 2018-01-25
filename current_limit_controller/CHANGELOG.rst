@@ -2,6 +2,11 @@
 Changelog for package current_limit_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fixed cmake
+* Contributors: Hilario Tome
+
 0.1.1 (2017-01-16)
 ------------------
 * Added gitignore
