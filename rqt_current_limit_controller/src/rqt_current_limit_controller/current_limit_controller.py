@@ -229,7 +229,7 @@ class CurrentLimitController(Plugin):
     def _load_clc(self):
         # Initialize actuator data corresponding to selected controller
         running_clc = self._running_clc_info()
-        self._actuator_names = next(x.resources for x in running_clc
+        self._actuator_names = next(_clc_joint_names(x) for x in running_clc
                                  if x.name == self._clc_name)
         for name in self._actuator_names:
             self._actuator_curr[name] = {}
@@ -356,6 +356,16 @@ class CurrentLimitController(Plugin):
             widgets.append(layout.itemAt(row_id,
                                          QFormLayout.FieldRole).widget())
         return widgets
+
+def _clc_joint_names(clc_info):
+    # NOTE: We assume that there is at least one hardware interface that
+    # claims resources (there should be), and the resource list is fetched
+    # from the first available interface
+    #return jtc_info.claimed_resources[0].resources
+    names = [];
+    for claimed_res in clc_info.claimed_resources:
+        names.extend(claimed_res.resources)
+    return names
 
 
 def _resolve_controller_ns(cm_ns, controller_name):
