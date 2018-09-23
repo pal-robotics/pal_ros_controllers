@@ -32,7 +32,7 @@ import rospkg
 from qt_gui.plugin import Plugin
 from python_qt_binding import loadUi
 from python_qt_binding.QtCore import QTimer, Signal
-from python_qt_binding.QtGui import QWidget, QFormLayout
+from python_qt_binding.QtWidgets import QWidget, QFormLayout
 
 from pal_control_msgs.msg import ActuatorCurrentLimit
 from controller_manager_msgs.utils\
@@ -74,7 +74,7 @@ class CurrentLimitController(Plugin):
     A reference implementation of the C{CurrentLimitController} is
     available in the C{current_limit_controller} ROS package.
     """
-    _cmd_pub_freq = 30.0  # Hz
+    _cmd_pub_freq = 10.0  # Hz
     _widget_update_freq = 30.0  # Hz
     _ctrlrs_update_freq = 1  # Hz
     _min_traj_dur = 5.0 / _cmd_pub_freq  # Minimum trajectory duration
@@ -196,6 +196,7 @@ class CurrentLimitController(Plugin):
         self._cm_ns = cm_ns
         if cm_ns:
             self._list_controllers = ControllerLister(cm_ns)
+            self._widget.clc_combo.clear()
             self._update_clc_list()
         else:
             self._list_controllers = None

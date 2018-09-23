@@ -4,7 +4,7 @@
   <version>0.1.2</version>
   <description>Graphical frontend for interacting with current_limit_controller instances.</description>
 
-  <maintainer email="adolfo.rodriguez@pal-robotics.com">Adolfo Rodriguez Tsouroukdissian</maintainer>
+  <maintainer email="luca.marchionni@pal-robotics.com">Luca Marchionni</maintainer>
   <author email="adolfo.rodriguez@pal-robotics.com">Adolfo Rodriguez Tsouroukdissian</author>
   <license>Modified BSD</license>
   <url type="website">http://wiki.ros.org/rqt_current_limit_controller</url>
