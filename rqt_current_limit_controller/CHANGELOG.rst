@@ -2,8 +2,8 @@
 Changelog for package rqt_current_limit_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.0 (2018-09-28)
+------------------
 * Fix resource names list
 * Migration to kinetic rqt
 * Contributors: Luca Marchionni
