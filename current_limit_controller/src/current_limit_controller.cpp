@@ -190,7 +190,7 @@ void CurrentLimitController::publishState(const ros::Time& time)
       for (unsigned int i = 0; i < handles_.size(); ++i)
       {
         const double val = handles_[i].getCurrentLimit();
-        state_pub_->msg_.current_limits[i] = isnan(val) ? 1.0 : val; // TODO: Fix in actuators manager side
+        state_pub_->msg_.current_limits[i] = std::isnan(val) ? 1.0 : val; // TODO: Fix in actuators manager side
       }
 
       state_pub_->unlockAndPublish();
