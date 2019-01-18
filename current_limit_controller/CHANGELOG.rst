@@ -2,8 +2,8 @@
 Changelog for package current_limit_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2019-01-18)
+------------------
 * Clang fixes
 * Change license to LGPL-3.0
 * Contributors: Victor Lopez
