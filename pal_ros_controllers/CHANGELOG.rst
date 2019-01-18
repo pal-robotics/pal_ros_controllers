@@ -2,6 +2,9 @@
 Changelog for package pal_ros_controllers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.0.0 (2018-09-28)
 ------------------
 
