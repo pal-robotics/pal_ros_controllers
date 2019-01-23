@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>rqt_current_limit_controller</name>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <description>Graphical frontend for interacting with current_limit_controller instances.</description>
 
   <maintainer email="luca.marchionni@pal-robotics.com">Luca Marchionni</maintainer>
