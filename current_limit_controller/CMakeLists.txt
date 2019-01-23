@@ -7,7 +7,6 @@ project(current_limit_controller)
 find_package(catkin REQUIRED COMPONENTS
   controller_interface
   pal_control_msgs
-  pal_ros_control
   pluginlib
   realtime_tools
   roscpp
@@ -20,10 +19,10 @@ catkin_package(
   CATKIN_DEPENDS
     controller_interface
     pal_control_msgs
-    pal_ros_control
     pluginlib
     realtime_tools
     roscpp
+    pal_hardware_interfaces
 )
 
 ###########
