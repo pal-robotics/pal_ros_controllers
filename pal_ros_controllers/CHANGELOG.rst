@@ -2,6 +2,11 @@
 Changelog for package pal_ros_controllers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Move simple_grasping_action to it's own repository
+* Contributors: Victor Lopez
+
 0.1.2 (2018-01-25)
 ------------------
 
