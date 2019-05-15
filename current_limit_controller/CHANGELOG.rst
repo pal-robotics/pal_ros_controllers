@@ -2,6 +2,18 @@
 Changelog for package current_limit_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'license-refactor' into 'erbium-devel'
+  Update pal license
+  See merge request control/pal_ros_controllers!3
+* Update PAL licenses
+* Merge branch 'remove-pal-ros-control-dep' into 'erbium-devel'
+  Remove pal_ros_control dependency
+  See merge request control/pal_ros_controllers!2
+* Remove pal_ros_control dependency
+* Contributors: Victor Lopez
+
 1.0.2 (2019-01-23)
 ------------------
 
