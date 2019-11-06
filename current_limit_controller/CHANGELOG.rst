@@ -2,8 +2,8 @@
 Changelog for package current_limit_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.4 (2019-11-06)
+------------------
 * Add SYSTEM to include_directories
 * Contributors: Victor Lopez
 

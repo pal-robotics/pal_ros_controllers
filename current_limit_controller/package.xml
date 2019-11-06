@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>current_limit_controller</name>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <description>
     Controller that allows to set the current limit for a group of actuators.
   </description>
