@@ -2,6 +2,11 @@
 Changelog for package current_limit_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add SYSTEM to include_directories
+* Contributors: Victor Lopez
+
 1.0.3 (2019-05-15)
 ------------------
 * Merge branch 'license-refactor' into 'erbium-devel'
